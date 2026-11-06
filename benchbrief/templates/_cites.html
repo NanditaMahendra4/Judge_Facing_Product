@@ -1,0 +1,6 @@
+{%- macro cites(fid, ids, quote="") -%}
+{%- set hl = ids|join(",") -%}
+{%- for sid in ids -%}
+<a class="cite" href="/filing/{{ fid }}/source?hl={{ hl }}#{{ sid|anchor }}" aria-label="Source: page {{ sid.split('.')[0][1:] }}, sentence {{ sid.split('.')[1][1:] }}" title="Page {{ sid.split('.')[0][1:] }}, sentence {{ sid.split('.')[1][1:] }}{{ ': ' ~ quote if quote }}">{{ sid|pg }}:{{ sid.split('.')[1][1:] }}</a>
+{%- endfor -%}
+{%- endmacro -%}

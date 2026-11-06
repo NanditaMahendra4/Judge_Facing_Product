@@ -1,0 +1,52 @@
+{
+  "sample": "answer_tenant",
+  "filer": "Dana Whitfield",
+  "expected_flags": [
+    {
+      "kind": "conflict",
+      "cites": [
+        "p1.s10",
+        "p2.s7"
+      ],
+      "must_mention": [
+        "incident"
+      ]
+    },
+    {
+      "kind": "conflict",
+      "cites": [
+        "p1.s7",
+        "p2.s5"
+      ],
+      "must_mention": [
+        "rent"
+      ]
+    },
+    {
+      "kind": "gap",
+      "cites": [
+        "p2.s3"
+      ],
+      "must_mention": [
+        "incident"
+      ]
+    }
+  ],
+  "relief_sentence_ids": [
+    "p2.s8",
+    "p2.s9"
+  ],
+  "evidence_labels": [
+    "Exhibit A",
+    "Exhibit B"
+  ],
+  "forbidden_flags": [
+    {
+      "kind": "gap",
+      "cites": [],
+      "must_mention": [
+        "request"
+      ]
+    }
+  ]
+}

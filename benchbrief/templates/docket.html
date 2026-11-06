@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Docket</h1>
+<p class="meta">Self-represented filings. Each brief organizes the record and nothing else: no recommendations, no credibility scoring, no predicted outcomes.</p>
+<table>
+<tr><th>Case</th><th>Caption</th><th>Filings</th><th>Bench Brief</th></tr>
+{% for c in cases %}
+<tr><td><a href="/case/{{ c.id }}">{{ c.number }}</a></td><td>{{ c.caption }}</td><td>{{ c.n }}</td><td>{{ "On" if c.brief_enabled else "Off" }}</td></tr>
+{% else %}
+<tr><td colspan="4" class="empty">No cases yet. Load samples with <code>python -m benchbrief seed</code>.</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

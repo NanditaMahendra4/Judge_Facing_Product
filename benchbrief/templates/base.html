@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Bench Brief{% endblock %}</title>
+<style>
+:root{--ink:#1d2433;--muted:#4d5666;--line:#d9dde5;--bg:#f6f7f9;--card:#fff;--accent:#1f4e8c;--warn:#8a5a00;--warnbg:#fff6e0;--gap:#4b5563;--gapbg:#eef1f5;--hl:#fff1a8;--focus:#0b57d0}
+@media (prefers-color-scheme:dark){:root{--ink:#e6e9ef;--muted:#a3abba;--line:#343b48;--bg:#14171c;--card:#1c2027;--accent:#8db4ee;--warn:#f0c46a;--warnbg:#3a2e12;--gap:#c9cfda;--gapbg:#262b34;--hl:#5a4d10;--focus:#9ec1ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Georgia,"Times New Roman",serif}
+header.top{background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:16px;align-items:baseline;font-family:system-ui,sans-serif}
+header.top a{color:var(--ink);text-decoration:none}header.top .brand{font-weight:700}
+header.top nav a{color:var(--muted);margin-right:12px;font-size:14px}
+main{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+h1,h2,h3{font-family:system-ui,sans-serif;line-height:1.25}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:22px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+a{color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin:12px 0}
+.meta{color:var(--muted);font:13px system-ui,sans-serif}
+ul.claims{list-style:none;padding:0;margin:0}ul.claims li{padding:5px 0;border-bottom:1px dotted var(--line)}ul.claims li:last-child{border:0}
+a.cite{font:600 11px system-ui,sans-serif;background:var(--gapbg);color:var(--accent);padding:1px 6px;border-radius:10px;text-decoration:none;margin-left:4px;white-space:nowrap}
+a.cite:hover{background:var(--accent);color:var(--card)}
+.flag{padding:8px 10px;border-radius:6px;margin:6px 0;font-size:14px}
+.flag.conflict{background:var(--warnbg);color:var(--warn)}.flag.gap{background:var(--gapbg);color:var(--gap)}
+.flag b{font:700 11px system-ui,sans-serif;text-transform:uppercase;margin-right:6px}
+.repeat{border-left:4px solid var(--accent);background:var(--card);padding:10px 12px;margin:12px 0;font-family:system-ui,sans-serif}
+.empty{color:var(--muted);font-style:italic}
+table{width:100%;border-collapse:collapse;font:14px system-ui,sans-serif}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+button,input,select,textarea{font:14px system-ui,sans-serif}
+button{background:var(--accent);color:var(--card);border:0;border-radius:6px;padding:7px 12px;cursor:pointer}button.secondary{background:transparent;color:var(--accent);border:1px solid var(--line)}
+input,select,textarea{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px;max-width:100%}
+textarea{width:100%;min-height:120px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.notice{font:13px system-ui,sans-serif;color:var(--muted);border:1px dashed var(--line);padding:8px 10px;border-radius:6px}
+.thread{border-left:3px solid var(--line);padding-left:12px;margin:10px 0}
+.sent{padding:1px 2px;border-radius:3px}.sent:target,.sent.hl{background:var(--hl)}
+.sid{font:10px system-ui,sans-serif;color:var(--muted);vertical-align:super;margin-right:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;background:var(--card);color:var(--ink);padding:8px 12px;border:2px solid var(--focus);border-radius:6px;z-index:10;font-family:system-ui,sans-serif}.skip:focus{top:8px}
+fieldset{border:0;margin:0;padding:0}legend{padding:0;color:var(--muted);font:13px system-ui,sans-serif}
+ul.flags{list-style:none;padding:0;margin:0}ul.flags li{margin:0}
+.flag h3{display:inline;font:700 11px system-ui,sans-serif;text-transform:uppercase;margin:0 6px 0 0}
+a.cite{text-decoration:underline}
+@media print{.skip,header.top,form,.noprint{display:none!important}body{background:#fff;color:#000}.card{border:0;padding:0}main{padding:0}a.cite{color:#000}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top"><a class="brand" href="/">Bench Brief</a><nav aria-label="Primary"><a href="/">Docket</a><a href="/metrics">Pilot metrics</a></nav></header>
+<main id="main" tabindex="-1">{% block body %}{% endblock %}</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

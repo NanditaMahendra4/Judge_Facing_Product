@@ -1,0 +1,24 @@
+{
+  "sample": "continue_3",
+  "filer": "Terrence Hall",
+  "expected_flags": [],
+  "relief_sentence_ids": [
+    "p1.s4",
+    "p1.s5"
+  ],
+  "evidence_labels": [],
+  "forbidden_flags": [
+    {
+      "kind": "gap",
+      "cites": [],
+      "must_mention": [
+        "request"
+      ]
+    },
+    {
+      "kind": "conflict",
+      "cites": [],
+      "must_mention": []
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ case.number }} · Bench Brief{% endblock %}
+{% block body %}
+<h1>{{ case.caption }}</h1>
+<div class="meta">{{ case.number }}</div>
+
+<form method="post" action="/case/{{ case.id }}/toggle" class="row noprint" style="margin:12px 0">
+  <span class="meta">Bench Brief for this case is <b>{{ "on" if case.brief_enabled else "off" }}</b>.</span>
+  <input type="hidden" name="enabled" value="{{ '0' if case.brief_enabled else '1' }}">
+  <button class="secondary">{{ "Turn off for this case" if case.brief_enabled else "Turn on for this case" }}</button>
+</form>
+
+<h2>Filings, grouped by repeated request</h2>
+{% for thread in threads %}
+<div class="thread">
+  {% for f in thread %}
+  <div>
+    <a href="/filing/{{ f.row.id }}">{{ f.row.title }}</a>
+    <span class="meta">· {{ f.row.filer }} · filed {{ f.row.filed_on|fmt_date }}</span>
+    {% if f.repeat %}<div class="meta">↳ {{ f.repeat }}</div>{% endif %}
+    {% if case.brief_enabled and not f.brief %}<div class="meta">Brief not available; open the filing directly.</div>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p class="empty">No filings yet.</p>
+{% endfor %}
+
+<h2 class="noprint">Add a filing</h2>
+<form class="card noprint" method="post" action="/case/{{ case.id }}/upload" enctype="multipart/form-data">
+  <div class="row">
+    <label>Filed on <input type="date" name="filed_on" required></label>
+    <label>Filer <input name="filer" placeholder="As on the filing"></label>
+    <label>Title <input name="title" placeholder="Optional"></label>
+  </div>
+  <p><label>File (.pdf or .txt, up to 15 MB) <input type="file" name="file" accept=".pdf,.txt"></label></p>
+  <p class="meta">…or paste text. Separate pages with a line reading <code>--- Page 2 ---</code>.</p>
+  <label class="meta" for="filing-text">Filing text</label>
+  <textarea id="filing-text" name="text"></textarea>
+  <p><button>File it</button></p>
+</form>
+{% endblock %}

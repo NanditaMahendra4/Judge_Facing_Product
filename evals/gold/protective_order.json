@@ -1,0 +1,45 @@
+{
+  "sample": "protective_order",
+  "filer": "Jordan Reyes",
+  "expected_flags": [
+    {
+      "kind": "gap",
+      "cites": [
+        "p1.s6"
+      ],
+      "must_mention": [
+        "week"
+      ]
+    },
+    {
+      "kind": "gap",
+      "cites": [
+        "p1.s9"
+      ],
+      "must_mention": [
+        "time"
+      ]
+    }
+  ],
+  "relief_sentence_ids": [
+    "p1.s3",
+    "p1.s12"
+  ],
+  "evidence_labels": [
+    "screenshots"
+  ],
+  "forbidden_flags": [
+    {
+      "kind": "gap",
+      "cites": [],
+      "must_mention": [
+        "request"
+      ]
+    },
+    {
+      "kind": "conflict",
+      "cites": [],
+      "must_mention": []
+    }
+  ]
+}

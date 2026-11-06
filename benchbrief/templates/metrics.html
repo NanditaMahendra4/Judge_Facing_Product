@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Pilot metrics</h1>
+<p class="meta">Compare judge review time on cases with Bench Brief on and off. Times come from the "Done reviewing" button.</p>
+<h2>Review time per filing</h2>
+<table><tr><th>Mode</th><th>Reviews</th><th>Average</th><th>Median</th></tr>
+{% for mode, s in review.items() %}<tr><td>{{ "With brief" if mode == "brief" else "Without brief" }}</td><td>{{ s.n }}</td><td>{{ "%.0f"|format(s.avg) }}s</td><td>{{ "%.0f"|format(s.median) }}s</td></tr>
+{% else %}<tr><td colspan="4" class="empty">No reviews logged yet.</td></tr>{% endfor %}
+</table>
+<h2>Judge usefulness rating</h2>
+<p>{% for k, v in useful.items() %}{{ k }}: {{ v }}{{ " · " if not loop.last }}{% else %}<span class="empty">None yet.</span>{% endfor %}</p>
+<h2>Generation</h2>
+<table><tr><th>Extractor</th><th>Briefs</th><th>Avg seconds</th></tr>
+{% for g in gen %}<tr><td>{{ g.extractor }}</td><td>{{ g.n }}</td><td>{{ "%.1f"|format(g.s or 0) }}</td></tr>{% endfor %}
+</table>
+<p class="meta">Failed generations (sent to manual review): {{ failed }}</p>
+<h2>Guardrail withholds</h2>
+<p>{% for k, v in dropped.items() %}{{ k }}: {{ v }}{{ " · " if not loop.last }}{% else %}<span class="empty">None.</span>{% endfor %}</p>
+{% endblock %}

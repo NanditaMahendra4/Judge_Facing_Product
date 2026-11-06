@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Filing: {{ f.title }}{% endblock %}
+{% block body %}
+<div class="meta"><a href="/case/{{ f.case_id }}">{{ f.number }}</a> · {{ f.caption }}{% if f.brief_enabled %} · <a href="/filing/{{ f.id }}">Back to brief</a>{% endif %}</div>
+<h1>{{ doc.title }}</h1>
+<div class="meta">Filed {{ f.filed_on|fmt_date }} by {{ f.filer }} · full text as filed</div>
+{% for page in doc.pages %}
+<div class="card"><div class="meta">Page {{ loop.index }}</div>
+<p>{% for s in page %}<span class="sent" id="{{ s.id|anchor }}" data-sid="{{ s.id }}"><span class="sid">{{ s.index }}</span>{{ s.text }}</span> {% endfor %}</p>
+</div>
+{% endfor %}
+{% if not f.brief_enabled %}
+<form class="card noprint" method="post" action="/filing/{{ f.id }}/done" data-timer>
+  <input type="hidden" name="seconds"><input type="hidden" name="mode" value="no-brief">
+  <span class="meta">Pilot (Bench Brief off for this case): </span><button>Done reviewing</button>
+</form>
+{% endif %}
+{% endblock %}
